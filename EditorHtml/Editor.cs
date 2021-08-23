@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace EdiotorHtml
+namespace EditorHtml
 {
     public static class Editor
     {
