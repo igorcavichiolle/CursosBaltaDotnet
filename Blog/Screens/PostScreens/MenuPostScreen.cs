@@ -22,7 +22,7 @@ namespace Blog.Screens.PostScreens
             switch (option)
             {
                 case 1:
-                    //ListTagScreen.Load();
+                    ListPostScreen.Load();
                     break;
                 case 2:
                     CreatePostScreen.Load();

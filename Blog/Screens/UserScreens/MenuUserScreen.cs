@@ -22,7 +22,7 @@ namespace Blog.Screens.UserScreens
             switch (option)
             {
                 case 1:
-                    //ListTagScreen.Load();
+                    ListUserScreen.Load();
                     break;
                 case 2:
                     CreateUserScreen.Load();

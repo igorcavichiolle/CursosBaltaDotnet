@@ -1,4 +1,5 @@
 ﻿using System;
+using Blog.Repositories;
 using Blog.Screens.CategoryScreens;
 using Blog.Screens.PostScreens;
 using Blog.Screens.RoleScreens;
@@ -59,6 +60,13 @@ namespace Blog
                 case 5:
                     MenuPostScreen.Load();
                     break;
+                case 6:
+                    LinkUserToRoleScreen.Load();
+                    break;
+                case 7:
+                    LinkPostToTagScreen.Load();
+                    break;
+
                 default: Load(); break;
             }
         }
