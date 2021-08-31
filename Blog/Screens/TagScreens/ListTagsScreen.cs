@@ -11,7 +11,7 @@ namespace Blog.Screens.TagScreens
             Console.Clear();
             Console.WriteLine("Lista de tags");
             Console.WriteLine("-------------");
-            List();
+            ListWithPost();
             Console.ReadKey();
             MenuTagScreen.Load();
         }
@@ -22,6 +22,19 @@ namespace Blog.Screens.TagScreens
             var tags = repository.Get();
             foreach (var item in tags)
                 Console.WriteLine($"{item.Id} - {item.Name} ({item.Slug})");
+        }
+
+        private static void ListWithPost()
+        {
+            var repository = new TagRepository(Database.Connection);
+            var tags = repository.GetWithPosts();
+
+            foreach (var tag in tags)
+            {
+                Console.WriteLine();
+                Console.WriteLine($"{tag.Id} - {tag.Name} ({tag.Slug})");
+                Console.WriteLine($"Quantidade de posts: {tag.QtdPosts}");
+            }
         }
     }
 }

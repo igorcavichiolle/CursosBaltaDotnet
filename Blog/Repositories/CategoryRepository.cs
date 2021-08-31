@@ -14,39 +14,22 @@ namespace Blog.Repositories
         : base(connection)
             => _connection = connection;
 
-        // public List<Category> GetWithPostss()
-        // {
-        //     var query = @"
-        //         SELECT
-        //             [Category].*,
-        //             [Post].*
-        //         FROM 
-        //             [Category]
-        //         LEFT JOIN 
-        //             [Post] ON [Category].[Id] = [Post].[CategoryId]";
+        public List<Category> GetWithPosts()
+        {
 
-        //     var categories = new List<Category>();
+            var sql = @"
+                SELECT 
+                    [Category].Id,
+                    [Category].[Name],
+                    [Category].Slug,
+                    COUNT([Post].Id) AS [QtdPosts]
+                FROM 
+                    [Category]
+                LEFT JOIN 
+                    [Post] ON [Category].Id = [Post].CategoryId
+                GROUP BY [Category].Id, [Category].Name, [Category].Slug";
 
-        //     var items = _connection.Query<Category, Post, Category>(
-        //         query,
-        //         (category, post) =>
-        //         {
-        //             var ctg = categories.FirstOrDefault(x => x.Id == category.Id);
-        //             if (ctg == null)
-        //             {
-        //                 ctg = category;
-        //                 if (post != null)
-        //                     ctg..Add(role);
-
-        //                 users.Add(ctg);
-        //             }
-        //             else
-        //                 usr.Roles.Add(role);
-
-        //             return user;
-        //         }, splitOn: "Id");
-
-        //     return users;
-        // }
+            return _connection.Query<Category>(sql).ToList();
+        }
     }
 }

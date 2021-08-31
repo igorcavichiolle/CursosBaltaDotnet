@@ -24,5 +24,8 @@ namespace Blog.Models
 
         [Write(false)]
         public List<Tag> Tags { get; set; }
+
+        [Write(false)]
+        public Category Category { get; set; }
     }
 }

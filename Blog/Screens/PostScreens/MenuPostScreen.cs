@@ -15,6 +15,8 @@ namespace Blog.Screens.PostScreens
             Console.WriteLine("2 - Cadastrar posts");
             Console.WriteLine("3 - Atualizar posts");
             Console.WriteLine("4 - Excluir posts");
+            Console.WriteLine("5 - Listar posts de uma categoria");
+            Console.WriteLine("6 - Listar posts com a sua categoria");
             Console.WriteLine();
             Console.WriteLine();
             var option = short.Parse(Console.ReadLine());
@@ -32,6 +34,12 @@ namespace Blog.Screens.PostScreens
                     break;
                 case 4:
                     //DeleteTagScreen.Load();
+                    break;
+                case 5:
+                    ListPostFromCategoryScreen.Load();
+                    break;
+                case 6:
+                    ListPostWithCategoryScreen.Load();
                     break;
                 default: Load(); break;
             }
